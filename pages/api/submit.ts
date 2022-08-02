@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import { verify } from "hcaptcha";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { verifyHcaptchaToken } from "verify-hcaptcha";
 import clientPromise from "../../lib/mongodb";
 
 type Data = {
@@ -24,10 +24,16 @@ export default async function handler(
     return;
   }
 
-  const status = await verify(process.env.HCAPTCHA_SECRET!, token);
+  const status = await verifyHcaptchaToken({
+    siteKey: process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY,
+    secretKey: process.env.HCAPTCHA_SECRET!,
+    token,
+  });
 
   if (status.success) {
-    (await clientPromise)
+    await (
+      await clientPromise
+    )
       .db()
       .collection("users")
       .insertOne({
@@ -39,7 +45,9 @@ export default async function handler(
       .catch(() => {
         res.status(500).json({ status: "server error" });
       });
+    return;
   }
 
-  res.status(400).json({ status: "Not auth", error: status["error-codes"] });
+  res.status(400).json({ status: "Not auth" });
+  return;
 }

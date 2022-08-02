@@ -1239,11 +1239,6 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
-hcaptcha@^0.1.1:
-  version "0.1.1"
-  resolved "https://registry.yarnpkg.com/hcaptcha/-/hcaptcha-0.1.1.tgz#0a5c3469ac55e3f3827f2fd07c2bf27859067d12"
-  integrity sha512-iMrDmH2VpIEKOrcKWidVjI89FdDKTEdZ7PfPWkP27sTazIIkob8YfdY2ezaufAnWBiUUcvzsn0qF+dyXtBH2Vw==
-
 html-tags@^3.1.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/html-tags/-/html-tags-3.2.0.tgz#dbb3518d20b726524e4dd43de397eb0a95726961"
@@ -2437,6 +2432,11 @@ v8-compile-cache@^2.0.3:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.3.0.tgz#2de19618c66dc247dcfb6f99338035d8245a2cee"
   integrity sha512-l8lCEmLcLYZh4nbunNZvQCJc5pv7+RCwa8q/LdUx8u7lsWvPDKmpodJAJNwkAhJC//dFY48KuIEmjtd4RViDrA==
+
+verify-hcaptcha@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/verify-hcaptcha/-/verify-hcaptcha-1.0.0.tgz#9a181de872099f832f196c40e6883f70f4917513"
+  integrity sha512-WRpRjUdybjvpxjciQ8+SQ1qXYIKlWghVA2sabGuX09s2jSvBHv6Dzz4Kzu8eBBCLvwiZ/6+ursx1aN4w7qRG9w==
 
 webidl-conversions@^7.0.0:
   version "7.0.0"
