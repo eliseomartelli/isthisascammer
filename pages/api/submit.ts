@@ -13,27 +13,32 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   if (req.method !== "POST") {
+    res.status(405).json({ status: "Method not allowed" });
     return;
   }
-
-  console.log(req);
 
   const { username, token } = req.body;
 
   if (!username || !token) {
+    res.status(400).json({ status: "Bad request" });
     return;
   }
 
   const status = await verify(process.env.HCAPTCHA_SECRET!, token);
 
   if (status.success) {
-    const user = await (await clientPromise)
+    (await clientPromise)
       .db()
       .collection("users")
       .insertOne({
         username,
+      })
+      .then(() => {
+        res.status(200).json({ status: "OK" });
+      })
+      .catch(() => {
+        res.status(500).json({ status: "server error" });
       });
-    res.status(200).json({ status: "OK" });
   }
 
   res.status(400).json({ status: "Not auth", error: status["error-codes"] });
