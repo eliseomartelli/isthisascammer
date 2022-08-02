@@ -5,6 +5,7 @@ import clientPromise from "../../lib/mongodb";
 
 type Data = {
   status: string;
+  error?: string | string[];
 };
 
 export default async function handler(
@@ -23,11 +24,9 @@ export default async function handler(
     return;
   }
 
-  const { success } = await verify(process.env.HCAPTCHA_SECRET!, token);
+  const status = await verify(process.env.HCAPTCHA_SECRET!, token);
 
-  console.log(username, token, success);
-
-  if (success) {
+  if (status.success) {
     const user = await (await clientPromise)
       .db()
       .collection("users")
@@ -37,5 +36,5 @@ export default async function handler(
     res.status(200).json({ status: "OK" });
   }
 
-  res.status(400).json({ status: "Not auth" });
+  res.status(400).json({ status: "Not auth", error: status["error-codes"] });
 }

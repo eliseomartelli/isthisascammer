@@ -18,7 +18,10 @@ const Home: NextPage = () => {
     <>
       <Head>
         <title>Is this a scammer?</title>
-        <meta name="description" content="A site made to check if an instagram account is a scammer." />
+        <meta
+          name="description"
+          content="A site made to check if an instagram account is a scammer."
+        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-full flex flex-col gap-8">
