@@ -175,11 +175,13 @@ const CheckForm = () => {
 };
 
 const Stats = () => {
-  const [count, setCount] = useState(null);
+  const [count, setCount] = useState<number|null>(null);
 
-  fetch("/api/stats").then(async (res) => {
-    const { result } = await res.json();
-    setCount(result);
+  useEffect(() => {
+    fetch("/api/stats").then(async (res) => {
+      const { result } = await res.json() as typeof res.json & {result: number};
+      setCount(result);
+    });
   });
 
   return (
