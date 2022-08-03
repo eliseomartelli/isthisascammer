@@ -2,6 +2,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import useSWR from "swr";
+import Button from "../../components/Button";
 import Container from "../../components/Container";
 
 export default function Check() {
@@ -15,9 +16,23 @@ export default function Check() {
 
   if (!data) {
     return (
-      <Container>
-        <>Loading...</>
-      </Container>
+      <div className="w-full">
+        <div className="w-full bg-gray-100 py-8 text-center flex align-middle">
+          <Container>
+            <div className="flex flex-col align-middle justify-center gap-2">
+              <div className="w-full flex justify-center">
+                <div className="w-24 h-24 block bg-gray-300 animate-pulse"></div>
+              </div>
+              <p className="block self-center w-44 h-8 bg-gray-300 animate-pulse"></p>
+              <h3 className="w-32 self-center h-10 bg-gray-300 animate-pulse"></h3>
+              <p className="w-56 bg-gray-300 animate-pulse block h-8 self-center"></p>
+              <div className="mt-6 justify-center flex">
+                <div className="block w-56 rounded-md bg-gray-300 h-10 shadow-lg animate-pulse self-center"></div>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </div>
     );
   }
 
@@ -32,8 +47,8 @@ export default function Check() {
   const isSafe = data.result > 0 ? "dangerous" : "safe";
 
   return (
-    <div className="w-full">
-      <div className="w-full heropattern-polkadots-gray-100 py-8 text-center flex align-middle">
+    <div className="w-full flex flex-col gap-8">
+      <div className="w-full bg-gray-100 py-8 text-center flex align-middle">
         <Container>
           <div className="flex flex-col align-middle justify-center gap-2">
             <div className="w-full flex justify-center">
@@ -85,6 +100,21 @@ export default function Check() {
           </div>
         </Container>
       </div>
+      <Container>
+        <div className="flex justify-center gap-2 flex-col text-center">
+          <a href="https://help.instagram.com/514187739359208">
+            <Button colour="secondary">
+              Learn how to be safe on Instagram
+            </Button>
+          </a>
+          <p>or</p>
+          <Link href="/" passHref>
+            <a>
+              <Button>Check another account</Button>
+            </a>
+          </Link>
+        </div>
+      </Container>
     </div>
   );
 }

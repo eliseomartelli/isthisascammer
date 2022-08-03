@@ -1,6 +1,7 @@
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useRouter } from "next/router";
 import React, { SyntheticEvent, useState } from "react";
+import Button from "../components/Button";
 import Container from "../components/Container";
 
 export default function Submit() {
@@ -20,21 +21,21 @@ export default function Submit() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        username,
+        username: target.username.value,
         token,
       }),
     }).then((res) => {
       if (res.status === 200) {
-        router.push(`/check/${username}`);
+        router.push(`/check/${target.username.value}`);
       }
     });
   }
 
   return (
-    <div className="w-full mt-4">
+    <div className="w-full bg-gray-100 py-8">
       <Container>
-        <div className="flex gap-8 flex-col">
-          <h1 className="text-2xl font-bold">Report an account</h1>
+        <div className="flex gap-8 flex-col text-center">
+          <p className="text-xl font-medium">Report an account</p>
           <form
             className="max-w-3xl w-full flex flex-col mx-auto gap-4"
             onSubmit={handleSubmit}
@@ -46,16 +47,15 @@ export default function Submit() {
               name="username"
               defaultValue={username}
             />
-            <HCaptcha
-              sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!}
-              onVerify={setToken}
-            />
-            <input
-              type="submit"
-              className="bg-red-800 py-2 px-4 text-white font-bold rounded-md shadow-md"
-              value="Report this account"
-              hidden={!token}
-            />
+            <div className="flex items-center flex-col">
+              <HCaptcha
+                sitekey={process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY!}
+                onVerify={setToken}
+              />
+            </div>
+            <Button colour="danger" disabled={!token}>
+              Report this account
+            </Button>
           </form>
         </div>
       </Container>

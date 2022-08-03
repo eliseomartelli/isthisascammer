@@ -9,16 +9,23 @@ function MyApp({ Component, pageProps }: AppProps) {
       <header className="bg-white shadow-md py-4">
         <Container>
           <Link href="/">
-            <p>Is this a scammer?</p>
+            <p className="font-medium">Is this a scammer?</p>
           </Link>
         </Container>
       </header>
-      <main className="flex min-h-screen">
+      <main className="flex flex-auto">
         <Component {...pageProps} />
       </main>
       <footer className="bg-gray-300 py-4">
         <Container>
-          <p>© {new Date().getFullYear()} - Eliseo Martelli</p>
+          <div className="flex flex-col gap-4">
+            <p>© {new Date().getFullYear()} - Eliseo Martelli</p>
+            <p className="font-light italic">
+              The use of any trade name or trademark is for identification and
+              reference purposes only and does not imply any association with
+              the trademark holder of their product brand.
+            </p>
+          </div>
         </Container>
       </footer>
     </div>
