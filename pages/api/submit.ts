@@ -24,6 +24,8 @@ export default async function handler(
     return;
   }
 
+  let cleanUsername = username!.toLowerCase().replace("@", "");
+
   const status = await verifyHcaptchaToken({
     siteKey: process.env.NEXT_PUBLIC_HCAPTCHA_SITE_KEY,
     secretKey: process.env.HCAPTCHA_SECRET!,
@@ -37,7 +39,7 @@ export default async function handler(
       .db()
       .collection("users")
       .insertOne({
-        username,
+        username: cleanUsername,
       })
       .then(() => {
         res.status(200).json({ status: "OK" });

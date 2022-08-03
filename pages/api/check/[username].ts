@@ -12,7 +12,7 @@ export default async function handler(
 ) {
   const { username } = req.query;
 
-  let safeUsername = (username! as string).toLowerCase();
+  let safeUsername = (username! as string).toLowerCase().replace("@", "");
 
   const userCount = await (await clientPromise)
     .db()
