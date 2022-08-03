@@ -3,24 +3,39 @@ import type { AppProps } from "next/app";
 import Container from "../components/Container";
 import Link from "next/link";
 import Image from "next/image";
+import FullSection from "../components/FullSection";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div className="h-full flex flex-col grow min-h-screen">
-      <header className="bg-white shadow-md py-4">
-        <Container>
-          <Link href="/">
-            <div className="flex items-center gap-2">
-              <Image src="/icon.png" width={32} height={32} />
-              <p className="font-medium">Is this a scammer?</p>
-            </div>
-          </Link>
-        </Container>
-      </header>
+      <Toolbar />
       <main className="flex flex-auto">
         <Component {...pageProps} />
       </main>
-      <footer className="bg-gray-300 py-4">
+      <Footer />
+    </div>
+  );
+}
+
+function Toolbar() {
+  return (
+    <header className="bg-white shadow-md py-4">
+      <Container>
+        <Link href="/">
+          <div className="flex items-center gap-2">
+            <Image src="/icon.png" width={32} height={32} alt="Logo" />
+            <p className="font-medium">Is this a scammer?</p>
+          </div>
+        </Link>
+      </Container>
+    </header>
+  );
+}
+
+function Footer() {
+  return (
+    <footer>
+      <FullSection className="bg-gray-300 py-4">
         <Container>
           <div className="flex flex-col gap-4">
             <p>© {new Date().getFullYear()} - Eliseo Martelli</p>
@@ -31,8 +46,8 @@ function MyApp({ Component, pageProps }: AppProps) {
             </p>
           </div>
         </Container>
-      </footer>
-    </div>
+      </FullSection>
+    </footer>
   );
 }
 

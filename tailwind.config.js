@@ -7,5 +7,5 @@ module.exports = {
   theme: {
     extend: {},
   },
-  plugins: [require("tailwindcss-hero-patterns")],
+  plugins: [],
 };
