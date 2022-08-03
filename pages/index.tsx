@@ -84,6 +84,12 @@ const Home: NextPage = () => {
                   <li>Investment scams</li>
                   <li>Job scams</li>
                 </ul>
+                <a
+                  href="https://help.instagram.com/514187739359208"
+                  className="text-blue-800 underline"
+                >
+                  Learn how to be safe on Instagram.
+                </a>
               </div>
             </div>
 
@@ -175,11 +181,13 @@ const CheckForm = () => {
 };
 
 const Stats = () => {
-  const [count, setCount] = useState<number|null>(null);
+  const [count, setCount] = useState<number | null>(null);
 
   useEffect(() => {
     fetch("/api/stats").then(async (res) => {
-      const { result } = await res.json() as typeof res.json & {result: number};
+      const { result } = (await res.json()) as typeof res.json & {
+        result: number;
+      };
       setCount(result);
     });
   });
