@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Container from "../components/Container";
 import Link from "next/link";
+import Image from "next/image";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -9,7 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <header className="bg-white shadow-md py-4">
         <Container>
           <Link href="/">
-            <p className="font-medium">Is this a scammer?</p>
+            <div className="flex items-center gap-2">
+              <Image src="/icon.png" width={32} height={32} />
+              <p className="font-medium">Is this a scammer?</p>
+            </div>
           </Link>
         </Container>
       </header>

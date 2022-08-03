@@ -47,7 +47,7 @@ export default function Check() {
   const isSafe = data.result > 0 ? "dangerous" : "safe";
 
   return (
-    <div className="w-full flex flex-col gap-8">
+    <div className="w-full flex flex-col gap-8 mb-8">
       <div className="w-full bg-gray-100 py-8 text-center flex align-middle">
         <Container>
           <div className="flex flex-col align-middle justify-center gap-2">

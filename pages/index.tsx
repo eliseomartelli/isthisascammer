@@ -5,6 +5,7 @@ import Router from "next/router";
 import { SyntheticEvent, useEffect, useState } from "react";
 import Button from "../components/Button";
 import Container from "../components/Container";
+import FullSection from "../components/FullSection";
 
 const Home: NextPage = () => {
   return (
@@ -150,7 +151,7 @@ const CheckForm = () => {
   }
 
   return (
-    <div className="w-full py-8 bg-gray-100">
+    <FullSection className="py-8 bg-gray-200">
       <Container>
         <div className="text-center flex flex-col gap-4">
           <p className="text-xl font-medium">
@@ -176,12 +177,12 @@ const CheckForm = () => {
           </Link>
         </div>
       </Container>
-    </div>
+    </FullSection>
   );
 };
 
 const Stats = () => {
-  const [count, setCount] = useState<number | null>(null);
+  const [count, setCount] = useState<number | null>(0);
 
   useEffect(() => {
     fetch("/api/stats").then(async (res) => {
@@ -193,7 +194,7 @@ const Stats = () => {
   });
 
   return (
-    <div className="bg-gray-700 text-white py-4">
+    <FullSection className="py-4 bg-gray-800 text-white">
       <Container>
         <div className="flex align-middle justify-center">
           <div className="flex items-center gap-4">
@@ -219,6 +220,6 @@ const Stats = () => {
           </div>
         </div>
       </Container>
-    </div>
+    </FullSection>
   );
 };
