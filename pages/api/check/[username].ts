@@ -12,10 +12,12 @@ export default async function handler(
 ) {
   const { username } = req.query;
 
+  let safeUsername = (username! as string).toLowerCase();
+
   const userCount = await (await clientPromise)
     .db()
     .collection("users")
-    .find({ username })
+    .find({ username: safeUsername })
     .count();
 
   res.status(200).json({ result: userCount });
