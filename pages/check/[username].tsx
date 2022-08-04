@@ -17,17 +17,17 @@ export default function Check() {
   if (!data) {
     return (
       <div className="w-full">
-        <div className="w-full bg-gray-100 py-8 text-center flex align-middle">
+        <div className="w-full bg-gray-200 py-8 text-center flex align-middle">
           <Container>
             <div className="flex flex-col align-middle justify-center gap-2">
               <div className="w-full flex justify-center">
                 <div className="w-24 h-24 block bg-gray-300 animate-pulse"></div>
               </div>
-              <p className="block self-center w-44 h-8 bg-gray-300 animate-pulse"></p>
-              <h3 className="w-32 self-center h-10 bg-gray-300 animate-pulse"></h3>
-              <p className="w-56 bg-gray-300 animate-pulse block h-8 self-center"></p>
+              <p className="block self-center w-44 h-6 bg-gray-300 animate-pulse"></p>
+              <h3 className="w-32 self-center h-8 bg-gray-300 animate-pulse"></h3>
+              <p className="w-56 bg-gray-300 animate-pulse block h-6 self-center"></p>
               <div className="mt-6 justify-center flex">
-                <div className="block w-56 rounded-md bg-gray-300 h-10 shadow-lg animate-pulse self-center"></div>
+                <div className="block w-56 rounded-md bg-gray-300 h-8 shadow-lg animate-pulse self-center"></div>
               </div>
             </div>
           </Container>
@@ -38,9 +38,40 @@ export default function Check() {
 
   if (error) {
     return (
-      <Container>
-        <>Error retriving data, try later.</>
-      </Container>
+      <div className="w-full">
+        <div className="w-full bg-gray-200 py-8 text-center flex align-middle">
+          <Container>
+            <div className="flex flex-col align-middle justify-center gap-2">
+              <div className="w-full flex justify-center">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-24 w-24"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="red"
+                  strokeWidth={2}
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+              </div>
+              <p>Error retrieving data for user</p>
+              <h3 className="self-center text-2xl font-bold">{username}</h3>
+              <p>please try again later.</p>
+              <div className="mt-6 justify-center flex">
+                <Link href="/" passHref>
+                  <a>
+                    <Button>Return home</Button>
+                  </a>
+                </Link>
+              </div>
+            </div>
+          </Container>
+        </div>
+      </div>
     );
   }
 
@@ -48,7 +79,7 @@ export default function Check() {
 
   return (
     <div className="w-full flex flex-col gap-8 mb-8">
-      <div className="w-full bg-gray-100 py-8 text-center flex align-middle">
+      <div className="w-full bg-gray-200 py-8 text-center flex align-middle">
         <Container>
           <div className="flex flex-col align-middle justify-center gap-2">
             <div className="w-full flex justify-center">

@@ -21,11 +21,13 @@ function Toolbar() {
   return (
     <header className="bg-white shadow-md py-4">
       <Container>
-        <Link href="/">
-          <div className="flex items-center gap-2">
-            <Image src="/icon.png" width={32} height={32} alt="Logo" />
-            <p className="font-medium">Is this a scammer?</p>
-          </div>
+        <Link href="/" passHref>
+          <a>
+            <div className="flex items-center gap-2">
+              <Image src="/icon.png" width={32} height={32} alt="Logo" />
+              <p className="font-medium">Is this a scammer?</p>
+            </div>
+          </a>
         </Link>
       </Container>
     </header>
@@ -39,6 +41,9 @@ function Footer() {
         <Container>
           <div className="flex flex-col gap-4">
             <p>© {new Date().getFullYear()} - Eliseo Martelli</p>
+            <a href="https://github.com/eliseomartelli/isthisascammer">
+              GitHub
+            </a>
             <p className="font-light italic">
               The use of any trade name or trademark is for identification and
               reference purposes only and does not imply any association with

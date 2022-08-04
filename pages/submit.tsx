@@ -32,7 +32,7 @@ export default function Submit() {
   }
 
   return (
-    <div className="w-full bg-gray-100 py-8">
+    <div className="w-full bg-gray-200 py-8">
       <Container>
         <div className="flex gap-8 flex-col text-center">
           <p className="text-xl font-medium">Report an account</p>
